@@ -1,0 +1,6 @@
+---
+# vars file for install-rundeck
+
+propriedades:
+  - framework.server.name
+  - framework.server.hostname

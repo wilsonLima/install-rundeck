@@ -1,0 +1,13 @@
+---
+# handlers file for install-rundeck
+
+- name: Start Rundeck 
+  service:
+    name: rundeckd
+    state: started
+    enabled: yes
+
+- name: Restart Rundeck 
+  service:
+    name: rundeckd
+    state: restarted

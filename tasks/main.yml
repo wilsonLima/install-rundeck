@@ -1,0 +1,52 @@
+---
+# tasks file for install-rundeck
+
+- include_tasks: "{{ item }}"
+  with_first_found:
+   - "{{ ansible_distribution | lower }}.yml"
+   - "{{ ansible_os_family | lower }}.yml"
+   - "os_defaults.yml"
+
+
+- name: Atualizando a propriedade serverURL com IP do servidor em rundeck-config.properties
+  when: os_default is not defined
+  lineinfile:
+    path: /etc/rundeck/rundeck-config.properties
+    regexp: "grails.serverURL="
+    line: "grails.serverURL=http://{{ ansible_default_ipv4.address }}:{{ rundeck_port }}"
+    backrefs: yes
+    state: present
+
+
+- name: Atualizando propriedades do arquivo framework.properties com IP do servidor
+  when: os_default is not defined
+  lineinfile:
+    path: /etc/rundeck/framework.properties
+    regexp: "{{ item }}="
+    line: "{{ item }}={{ ansible_default_ipv4.address }}"
+    backrefs: yes
+    state: present
+  with_items:
+    - "{{ propriedades }}"
+
+
+- name: Atualizando a porta do Rundeck em framework.properties
+  when: os_default is not defined
+  lineinfile:
+    path: /etc/rundeck/framework.properties
+    regexp: "framework.server.port="
+    line: "framework.server.port={{ rundeck_port }}"
+    backrefs: yes
+    state: present
+
+
+- name: Atualizando a propriedade framework.server.url com IP do servidor em framework.properties
+  when: os_default is not defined
+  lineinfile:
+    path: /etc/rundeck/framework.properties
+    regexp: "framework.server.url="
+    line: "framework.server.url=http://{{ ansible_default_ipv4.address }}:{{ rundeck_port }}"
+    backrefs: yes
+    state: present
+  notify:
+    - Restart Rundeck 

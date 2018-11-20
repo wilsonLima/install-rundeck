@@ -1,0 +1,20 @@
+---
+    
+- name: Instalando o Java 8
+  yum: 
+    name: java-1.8.0 
+    state: present
+  
+  
+- name: Adicionando o repositorio do Rundeck
+  yum:
+    name: https://repo.rundeck.org/latest.rpm
+    state: present
+
+
+- name: Instalando o Rundeck
+  yum:
+    name: rundeck
+    state: present
+  notify:
+    - Start Rundeck
