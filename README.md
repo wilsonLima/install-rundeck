@@ -8,6 +8,15 @@ Distribuições Suportadas pela Role
 
 - RedHat ou CentOS
 
+
+Tags da Role 
+--------------
+
+- deps: Instala as dependências do Rundeck.
+- repo: Insere o repositório do Rundeck.
+- rundeck: Realiza a instalação do pacote do Rundeck.
+
+
 Variáveis da Role 
 --------------
 

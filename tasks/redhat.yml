@@ -4,12 +4,16 @@
   yum: 
     name: java-1.8.0 
     state: present
+  tags:
+    - deps
   
   
 - name: Adicionando o repositorio do Rundeck
   yum:
     name: https://repo.rundeck.org/latest.rpm
     state: present
+  tags:
+    - repo
 
 
 - name: Instalando o Rundeck
@@ -18,3 +22,5 @@
     state: present
   notify:
     - Start Rundeck
+  tags:
+    - rundeck
