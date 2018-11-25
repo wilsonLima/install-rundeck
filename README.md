@@ -15,6 +15,7 @@ Tags da Role
 - deps: Instala as dependências do Rundeck.
 - repo: Insere o repositório do Rundeck.
 - rundeck: Realiza a instalação do pacote do Rundeck.
+- config: Realiza a configuração de pós instalação do Rundeck.
 
 
 Variáveis da Role 

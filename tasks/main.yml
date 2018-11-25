@@ -16,6 +16,8 @@
     line: "grails.serverURL=http://{{ ansible_default_ipv4.address }}:{{ rundeck_port }}"
     backrefs: yes
     state: present
+  tags:
+    - config
 
 
 - name: Atualizando propriedades do arquivo framework.properties com IP do servidor
@@ -28,7 +30,8 @@
     state: present
   with_items:
     - "{{ propriedades }}"
-
+  tags:
+    - config
 
 - name: Atualizando a porta do Rundeck em framework.properties
   when: os_default is not defined
@@ -38,7 +41,8 @@
     line: "framework.server.port={{ rundeck_port }}"
     backrefs: yes
     state: present
-
+  tags:
+    - config
 
 - name: Atualizando a propriedade framework.server.url com IP do servidor em framework.properties
   when: os_default is not defined
@@ -49,4 +53,6 @@
     backrefs: yes
     state: present
   notify:
-    - Restart Rundeck 
+    - Restart Rundeck
+  tags:
+    - config
