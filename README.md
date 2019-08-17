@@ -1,7 +1,7 @@
 install-rundeck
 =========
 
-Role do Ansible para instalação de um servidor Rundeck.
+Role do Ansible para instalação de um servidor Rundeck (com OpenJDK 8).
 
 Distribuições Suportadas pela Role
 ------------
