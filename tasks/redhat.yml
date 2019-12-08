@@ -1,14 +1,14 @@
 ---
     
-- name: Instalando o Java 8
+- name: "Instalando o Java 8"
   yum: 
-    name: java-1.8.0 
+    name: java-1.8.0-openjdk-devel 
     state: present
   tags:
     - deps
   
   
-- name: Adicionando o repositorio do Rundeck
+- name: "Adicionando o repositorio do Rundeck"
   yum:
     name: https://repo.rundeck.org/latest.rpm
     state: present
@@ -16,7 +16,7 @@
     - repo
 
 
-- name: Instalando o Rundeck
+- name: "Instalando o Rundeck"
   yum:
     name: rundeck
     state: present

@@ -6,7 +6,7 @@ Role do Ansible para instalação de um servidor Rundeck (com OpenJDK 8).
 Distribuições Suportadas pela Role
 ------------
 
-- RedHat ou CentOS
+- RedHat ou CentOS 7 ou superior
 
 
 Tags da Role 
